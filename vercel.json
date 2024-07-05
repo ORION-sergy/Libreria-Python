@@ -5,10 +5,7 @@
             "src": "app.py",
             "use": "@vercel/python",
             "config": {
-                "env": {
-                    "PIP_NO_BINARY": "mysqlclient",
-                    "MYSQLCLIENT_STATIC": "1"
-                }
+                "buildCommand": "bash setup.sh"
             }
         }
     ],
