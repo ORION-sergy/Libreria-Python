@@ -27,6 +27,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+""" INICIO """
 @app.route('/')
 def inicio():
     conexion = mysql.connect
@@ -40,15 +41,18 @@ def inicio():
 def imagenes(imagen):
     return send_from_directory(os.path.join('templates/sitio/img'), imagen)
 
+""" REGISTRO """
 @app.route('/registro')
 def registro():
     return render_template('sitio/registro.html')
 
+""" ADMIN INDEX """
 @app.route('/admin/')
 @login_required
 def admin_index():
     return render_template('admin/index.html')
 
+""" LOGIN """
 @app.route('/admin/login')
 def admin_login():
     return render_template('admin/login.html')

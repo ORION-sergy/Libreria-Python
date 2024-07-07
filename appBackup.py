@@ -91,7 +91,7 @@ def admin_libros_guardar():
     
     # Continuar con la inserción del libro
     _nombre = request.form['txtNombre']
-    _url = request.form['txtURL']
+    _who = request.form['txtWHO']
     _archivo = request.files['txtImagen']
     
     tiempo = datetime.now()
@@ -104,8 +104,8 @@ def admin_libros_guardar():
     else:
         nuevoNombre = ''  # Opcional: asignar un valor por defecto si no se proporciona imagen
     
-    sql = "INSERT INTO `libros` (`nombre`, `imagen`, `url`) VALUES (%s, %s, %s);"
-    datos = (_nombre, nuevoNombre, _url)
+    sql = "INSERT INTO `libros` (`nombre`, `imagen`, `who`) VALUES (%s, %s, %s);"
+    datos = (_nombre, nuevoNombre, _who)
     
     cursor.execute(sql, datos)
     conexion.commit()
@@ -147,7 +147,7 @@ def admin_libros_editar(id):
 def admin_libros_actualizar():
     _id = request.form['txtID']
     _nombre = request.form['txtNombre']
-    _url = request.form['txtURL']
+    _who = request.form['txtWHO']
     _archivo = request.files['txtImagen']
     
     tiempo = datetime.now()
@@ -162,8 +162,8 @@ def admin_libros_actualizar():
         _archivo.save(rutaArchivo)
         
         # Actualizar con nueva imagen
-        sql = "UPDATE `libros` SET nombre = %s, imagen = %s, url = %s WHERE id = %s;"
-        datos = (_nombre, nuevoNombre, _url, _id)
+        sql = "UPDATE `libros` SET nombre = %s, imagen = %s, who = %s WHERE id = %s;"
+        datos = (_nombre, nuevoNombre, _who, _id)
         
         # Eliminar la imagen antigua
         cursor.execute("SELECT imagen FROM `libros` WHERE id = %s", (_id,))
@@ -172,8 +172,8 @@ def admin_libros_actualizar():
             os.unlink('templates/sitio/img/' + str(libro[0]))
     else:
         # Actualizar sin cambiar la imagen
-        sql = "UPDATE `libros` SET nombre = %s, url = %s WHERE id = %s;"
-        datos = (_nombre, _url, _id)
+        sql = "UPDATE `libros` SET nombre = %s, who = %s WHERE id = %s;"
+        datos = (_nombre, _who, _id)
     
     cursor.execute(sql, datos)
     conexion.commit()
