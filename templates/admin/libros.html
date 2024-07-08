@@ -14,9 +14,10 @@
 </style>
 <script src="https://cdn.lordicon.com/lordicon-1.1.0.js"></script>
 <!-- Admin de libros -->
-<div class="mt-[60px] pb-6">
+<div class="mt-[60px] pb-1">
     <p class="text-3xl font-">Libromania Administrador</p>
 </div>
+<!-- GIRE EL DISPOSITIVO -->
 <div class="lg:hidden block mx-auto">
     <div class="flex flex-col items-center justify-between w-fit mx-auto">
         <span class=" w-[16px] h-[16px]">
@@ -25,7 +26,7 @@
                 trigger="hover">
             </lord-icon>
         </span>
-        <p class="mt-5 text-[14px]">Gire el Disposivito para una mejor experiencia</p>
+        <p class="mt-5 text-[14px] font-medium px-2 mb-2 rounded-lg text-white bg-black">Gire el Disposivito para una mejor experiencia</p>
     </div>
 </div>
 
@@ -74,9 +75,18 @@
                 {% endwith %}
             </div>
             <p class="text-2xl pt-8 pb-2">Libros:</p>
+            <div class="lg:hidden">
+                <lord-icon
+                    src="https://cdn.lordicon.com/axacjdbs.json"
+                    trigger="in"
+                    delay="1000"
+                    state="in-reveal"
+                    style="width:50px;height:50px">
+                </lord-icon>
+            </div>
         </div>
         <!-- TABLA -->
-        <div class="pt-6 px-12 max-w-[90vw]">
+        <div class="sm:pt-6 px-12 max-w-[90vw]">
             <div class="overflow-x-auto">
                 <table class="min-w-full mx-auto">
                     <thead>
